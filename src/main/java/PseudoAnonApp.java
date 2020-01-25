@@ -9,7 +9,7 @@ public class PseudoAnonApp {
     public static void main (String[] args) throws InterruptedException, KeeperException, IOException {
         ActorSystem system = ActorSystem.create("anonymizer");
         ActorRef storeActor = system.actorOf(Props.create(StoreActor.class));
-        
+
 
 
     }
