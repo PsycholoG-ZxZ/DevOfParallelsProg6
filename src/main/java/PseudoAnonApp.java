@@ -7,6 +7,8 @@ import org.asynchttpclient.AsyncHttpClient;
 
 import java.io.IOException;
 
+import static org.asynchttpclient.Dsl.asyncHttpClient;
+
 public class PseudoAnonApp {
     public static void main (String[] args) throws InterruptedException, KeeperException, IOException {
         ActorSystem system = ActorSystem.create("anonymizer");
