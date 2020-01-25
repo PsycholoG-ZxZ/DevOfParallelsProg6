@@ -6,4 +6,6 @@ public class AllServersMessage {
     public AllServersMessage(ArrayList<String> allServers){
         this.allServers = allServers;
     }
+
+    
 }
