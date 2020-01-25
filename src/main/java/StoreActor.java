@@ -14,6 +14,10 @@ public class StoreActor extends AbstractActor {
         return ReceiveBuilder.create()
                 .match(GetMessage.class, m ->
                         getSender().tell(new RandomServerMessage(addresses.get(randomServer.nextInt(addresses.size()))), self()))
+                .match()
+
+
+                .build();
 
     }
 
