@@ -15,7 +15,7 @@ public class StoreActor extends AbstractActor {
                 .match(GetMessage.class, m ->
                         getSender().tell(new RandomServerMessage(addresses.get(randomServer.nextInt(addresses.size()))), self()))
                 .match(AllServersMessage.class, m ->
-                        )
+                        getSender().tell())
 
 
                 .build();
