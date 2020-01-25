@@ -13,7 +13,7 @@ public class PseudoAnonApp {
         ActorRef storeActor = system.actorOf(Props.create(StoreActor.class));
         final ActorMaterializer materializer = ActorMaterializer.create(system);
         final AsyncHttpClient asyncHttpClient = asyncHttpClient();
-        
+
 
 
 
