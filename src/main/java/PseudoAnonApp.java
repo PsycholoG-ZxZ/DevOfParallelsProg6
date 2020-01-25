@@ -3,6 +3,7 @@ import akka.actor.ActorSystem;
 import akka.actor.Props;
 import akka.stream.ActorMaterializer;
 import org.apache.zookeeper.KeeperException;
+import org.asynchttpclient.AsyncHttpClient;
 
 import java.io.IOException;
 
@@ -11,7 +12,8 @@ public class PseudoAnonApp {
         ActorSystem system = ActorSystem.create("anonymizer");
         ActorRef storeActor = system.actorOf(Props.create(StoreActor.class));
         final ActorMaterializer materializer = ActorMaterializer.create(system);
-        final AsyncHttpClient async
+        final AsyncHttpClient asyncHttpClient = asyncHttpClient();
+        
 
 
 
