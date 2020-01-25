@@ -3,5 +3,6 @@ public class RandomServerMessage {
 
     public RandomServerMessage(String server){
         this.server = server;
+        
     }
 }
