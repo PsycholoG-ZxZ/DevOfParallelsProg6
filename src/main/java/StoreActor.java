@@ -14,6 +14,7 @@ public class StoreActor extends AbstractActor {
         return ReceiveBuilder.create()
                 .match(GetMessage.class, m ->
                         getSender().tell(new RandomServerMessage(addresses.get(randomServer.nextInt(addresses.size()))), self()))
+
                 .match(AllServersMessage.class, m ->{ ArrayList<String> newServers = m.getAllServers();
                         if (addresses.size() == 0) {
                             this.addresses.addAll(newServers);
@@ -22,6 +23,7 @@ public class StoreActor extends AbstractActor {
                             this.addresses.addAll(newServers);
                         }
                 })
+
                 .build();
 
     }
