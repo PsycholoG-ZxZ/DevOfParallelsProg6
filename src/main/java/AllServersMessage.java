@@ -7,5 +7,7 @@ public class AllServersMessage {
         this.allServers = allServers;
     }
 
-    
+    public ArrayList<String> getAllServers() {
+        return allServers;
+    }
 }
