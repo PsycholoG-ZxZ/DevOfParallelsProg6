@@ -26,7 +26,7 @@ public class Anonymization {
                     if (count_int == 0){
                         response = fetch(asyncHttp.prepareGet(url).build());
                     }else{
-                        response = requestTreatment()
+                        response = requestTreatment(url);
                     }
                     return completeOKWithFutureString(response.thenApply(Response::getResponseBody));
 
