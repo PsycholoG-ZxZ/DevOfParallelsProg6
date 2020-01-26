@@ -26,6 +26,8 @@ public class Anonymization {
                     CompletionStage<Response> response;
                     if (count_int == 0){
                         response = fetch(asyncHttp.prepareGet(url).build());
+                    }else{
+                        
                     }
 
                 }))
