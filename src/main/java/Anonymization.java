@@ -28,7 +28,7 @@ public class Anonymization {
                     }else{
 
                     }
-                    return completeOKWithFutureString(response)
+                    return completeOKWithFutureString(response);
 
                 }))
         );
