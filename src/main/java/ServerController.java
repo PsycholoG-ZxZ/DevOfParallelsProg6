@@ -11,12 +11,12 @@ public class ServerController {
     private ActorRef storeActor;
     private ZooKeeper zoo;
 
-    public ServerController(ActorRef store, ZooKeeper zoo){
+    public ServerController(ActorRef store, ZooKeeper zoo, String link){
         this.storeActor = store;
         this.zoo = zoo;
         watchChildrenCallback(null);
 
-        zoo.create("/servers")
+        zoo.create("/servers" + "/" + link, )
 
     }
 
