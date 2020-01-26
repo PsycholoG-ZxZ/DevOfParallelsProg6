@@ -16,7 +16,7 @@ public class ServerController {
         this.zoo = zoo;
         watchChildrenCallback(null);
 
-        zoo.create("servers")
+        zoo.create("/servers")
 
     }
 
