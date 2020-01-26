@@ -43,7 +43,7 @@ public class Anonymization {
     private CompletionStage<Response> requestTreatment(String url, int count) {
         return Patterns.ask(storage, new GetMessage(), Duration.ofSeconds(5)).thenApply(s -> ((RandomServerMessage)s).getServer())
                 .thenCompose(m -> {
-                    asyncHttp.executeRequest(getRequest());
+                    asyncHttp.executeRequest(getRequest("new url",url,count));
 
                 })
     }
