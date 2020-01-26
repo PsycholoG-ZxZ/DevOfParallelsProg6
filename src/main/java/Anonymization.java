@@ -6,8 +6,7 @@ import org.asynchttpclient.Response;
 
 import java.util.concurrent.CompletionStage;
 
-import static akka.http.javadsl.server.Directives.get;
-import static akka.http.javadsl.server.Directives.parameter;
+import static akka.http.javadsl.server.Directives.*;
 
 public class Anonymization {
     private ZooKeeper zoo;
@@ -29,6 +28,7 @@ public class Anonymization {
                     }else{
 
                     }
+                    return completeOKWithFutureString()
 
                 }))
         );
