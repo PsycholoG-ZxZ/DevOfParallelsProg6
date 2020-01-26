@@ -1,8 +1,11 @@
 public class RandomServerMessage {
-    public String server;
+    private String server;
 
     public RandomServerMessage(String server){
         this.server = server;
+    }
 
+    public String getServer() {
+        return server;
     }
 }
