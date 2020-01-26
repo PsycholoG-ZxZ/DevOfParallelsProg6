@@ -4,6 +4,7 @@ import akka.actor.Props;
 import akka.http.javadsl.Http;
 import akka.stream.ActorMaterializer;
 import org.apache.zookeeper.KeeperException;
+import org.apache.zookeeper.ZooKeeper;
 import org.asynchttpclient.AsyncHttpClient;
 
 import java.io.IOException;
@@ -21,7 +22,7 @@ public class PseudoAnonApp {
         int port = Integer.parseInt(args[1]);
 
         final Http http = Http.get(system);
-        
+        ZooKeeper zoo = new ZooKeeper()
 
 
 
