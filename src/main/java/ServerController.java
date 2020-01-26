@@ -17,7 +17,6 @@ public class ServerController {
         String port = link.substring(link.length()-5, link.length()-1);
         zoo.create("/servers" + "/" + link, (host + ":" + port).getBytes(),
                 ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL);
-
     }
 
     private void watchChildrenCallback(WatchedEvent event){

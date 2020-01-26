@@ -30,6 +30,8 @@ public class PseudoAnonApp {
 
         ServerController server = new ServerController(storeActor, zoo, link, host);
 
+        final Anonymization anonServer = new Anonymization();
+
 
 
 
