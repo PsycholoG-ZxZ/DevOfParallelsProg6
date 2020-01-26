@@ -1,6 +1,7 @@
 import akka.http.javadsl.server.Route;
 import org.apache.zookeeper.ZooKeeper;
 import org.asynchttpclient.AsyncHttpClient;
+import org.asynchttpclient.Request;
 import org.asynchttpclient.Response;
 
 import java.util.concurrent.CompletionStage;
@@ -30,5 +31,9 @@ public class Anonymization {
                 }))
         );
 
+    }
+
+    private CompletionStage<Response> fetch(Request build) {
+        
     }
 }
