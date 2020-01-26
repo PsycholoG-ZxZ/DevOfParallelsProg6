@@ -28,7 +28,7 @@ public class PseudoAnonApp {
 
         String link = "localhost" + port;
 
-        ServerController server = new ServerController(storeActor, zoo, link);
+        ServerController server = new ServerController(storeActor, zoo, link, host);
 
 
 
