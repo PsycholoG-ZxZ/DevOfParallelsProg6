@@ -2,6 +2,8 @@ import akka.http.javadsl.server.Route;
 import org.apache.zookeeper.ZooKeeper;
 import org.asynchttpclient.AsyncHttpClient;
 
+import static akka.http.javadsl.server.Directives.get;
+
 public class Anonymization {
     private ZooKeeper zoo;
     private AsyncHttpClient asyncHttp;
@@ -12,6 +14,8 @@ public class Anonymization {
     }
 
     public Route routeCreater(){
-        
+        Route route = get(()-> parameter
+
+        )
     }
 }
