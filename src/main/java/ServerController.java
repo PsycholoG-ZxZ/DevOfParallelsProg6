@@ -15,6 +15,9 @@ public class ServerController {
         this.storeActor = store;
         this.zoo = zoo;
         watchChildrenCallback(null);
+
+        
+
     }
 
     private void watchChildrenCallback(WatchedEvent event){
