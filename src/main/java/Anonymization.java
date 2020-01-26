@@ -22,9 +22,9 @@ public class Anonymization {
                 parameter("count", count ->
                 {
                     int count_int = Integer.parseInt(count);
-                    CompletionStage<Response> resp;
+                    CompletionStage<Response> response;
                     if (count_int == 0){
-                        
+                        response
                     }
 
                 }))
