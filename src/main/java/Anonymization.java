@@ -48,8 +48,8 @@ public class Anonymization {
                 })
     }
 
-    private Request getRequest() {
-        
+    private Request getRequest(String servUrl, String url, int count) {
+        return asyncHttp.prepareGet(servUrl)
 
     }
 
