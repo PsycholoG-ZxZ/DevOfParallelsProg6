@@ -14,7 +14,7 @@ public class ServerController {
 
     public void watchChildrenCallback(){
         try{
-            storeActor.tell(new AllServersMessage(zoo.getChildren("/servers"), this::watchChildrenCallback).getAllServers());
+            storeActor.tell(new AllServersMessage(zoo.getChildren("/servers"), this::watchChildrenCallback).getAllServers()));
         }catch (Exception ex){
             throw new RuntimeException(ex);
 
