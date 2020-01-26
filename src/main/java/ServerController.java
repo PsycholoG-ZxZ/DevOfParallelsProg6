@@ -1,5 +1,6 @@
 import akka.actor.Actor;
 import akka.actor.ActorRef;
+import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.ZooDefs;
 import org.apache.zookeeper.ZooKeeper;
@@ -17,8 +18,8 @@ public class ServerController {
         this.zoo = zoo;
         watchChildrenCallback(null);
         String port = link.substring(link.length()-5, link.length()-1);
-        zoo.create("/servers" + "/" + link, host + ":" + port,
-                ZooDefs.Ids.OPEN_ACL_UNSAFE)
+        zoo.create("/servers" + "/" + link, (host + ":" + port).getBytes(),
+                ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL);
 
     }
 
