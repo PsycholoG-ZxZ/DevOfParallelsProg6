@@ -2,7 +2,9 @@ import akka.NotUsed;
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
+import akka.http.javadsl.ConnectHttp;
 import akka.http.javadsl.Http;
+import akka.http.javadsl.ServerBinding;
 import akka.http.javadsl.model.HttpRequest;
 import akka.http.javadsl.model.HttpResponse;
 import akka.stream.ActorMaterializer;
@@ -12,6 +14,7 @@ import org.apache.zookeeper.ZooKeeper;
 import org.asynchttpclient.AsyncHttpClient;
 
 import java.io.IOException;
+import java.util.concurrent.CompletionStage;
 import java.util.logging.Logger;
 
 import static org.asynchttpclient.Dsl.asyncHttpClient;
@@ -36,6 +39,7 @@ public class PseudoAnonApp {
 
         final Anonymization anonServer = new Anonymization(zoo,asyncHttpClient, storeActor);
         final Flow<HttpRequest, HttpResponse, NotUsed> flowForServer = anonServer.routeCreater().flow(system,materializer);
+        final CompletionStage<ServerBinding> bind = http.bindAndHandle(flowForServer, ConnectHttp.toHost(host,port))
 
 
 
