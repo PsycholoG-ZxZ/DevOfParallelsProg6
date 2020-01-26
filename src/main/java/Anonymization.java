@@ -46,7 +46,7 @@ public class Anonymization {
                 .handle((res, ex) -> {
                     storage.tell(new RandomServerMessage(m),ActorRef.noSender());
                     return res;
-                });
+                }));
     }
 
     private Request getRequest(String servUrl, String url, int count) {
