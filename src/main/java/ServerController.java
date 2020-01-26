@@ -13,7 +13,7 @@ public class ServerController {
     public ServerController(ActorRef store, ZooKeeper zoo){
         this.storeActor = store;
         this.zoo = zoo;
-        watchChildrenCallback();
+        watchChildrenCallback(null);
     }
 
     private void watchChildrenCallback(WatchEvent event){
