@@ -5,8 +5,9 @@ import org.asynchttpclient.AsyncHttpClient;
 import org.asynchttpclient.Request;
 import org.asynchttpclient.Response;
 
+import java.time.Duration;
 import java.util.concurrent.CompletionStage;
-import java.util.regex.Pattern;
+import akka.pattern.Patterns;
 
 import static akka.http.javadsl.server.Directives.*;
 
@@ -40,7 +41,7 @@ public class Anonymization {
     }
 
     private CompletionStage<Response> requestTreatment(String url) {
-        return Pattern.ask(storage, new GetMessage())
+        return Pattern.ask(storage, new GetMessage(), Duration.ofSeconds(5)).
     }
 
     private CompletionStage<Response> fetch(Request build) {
