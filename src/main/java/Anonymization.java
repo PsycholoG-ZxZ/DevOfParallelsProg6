@@ -1,5 +1,6 @@
 import akka.actor.ActorRef;
 import akka.http.javadsl.server.Route;
+import org.apache.zookeeper.KeeperException;
 import org.apache.zookeeper.ZooKeeper;
 import org.asynchttpclient.AsyncHttpClient;
 import org.asynchttpclient.Request;
@@ -51,10 +52,12 @@ public class Anonymization {
 
     private String getNewUrl(String m) {
         try{
-            
-            return "";
-        }catch (){
-
+            String serverUrl = new String(zoo.getData(m, false,null));
+            return serverUrl;
+        }catch (InterruptedException ex){
+            throw new RuntimeException(ex);
+        }catch (KeeperException exx){
+            throw new RuntimeException(exx);
         }
     }
 
