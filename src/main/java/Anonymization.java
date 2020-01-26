@@ -34,6 +34,6 @@ public class Anonymization {
     }
 
     private CompletionStage<Response> fetch(Request build) {
-        return asyncHttp.
+        return asyncHttp.executeRequest()
     }
 }
