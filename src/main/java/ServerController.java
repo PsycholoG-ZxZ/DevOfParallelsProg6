@@ -1,5 +1,6 @@
 import akka.actor.Actor;
 import akka.actor.ActorRef;
+import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.ZooKeeper;
 
 import java.nio.file.WatchEvent;
@@ -22,7 +23,6 @@ public class ServerController {
             .map(s -> "/servers " + s).collect(Collectors.toCollection(ArrayList::new))), ActorRef.noSender());
         }catch (Exception ex){
             throw new RuntimeException(ex);
-
         }
 
     }
