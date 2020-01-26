@@ -24,7 +24,7 @@ public class Anonymization {
                     int count_int = Integer.parseInt(count);
                     CompletionStage<Response> response;
                     if (count_int == 0){
-                        response =
+                        response = 
                     }
 
                 }))
