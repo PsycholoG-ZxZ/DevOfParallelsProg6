@@ -19,9 +19,6 @@ public class ServerController {
                 ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL);
 
     }
-    public void CreaterServer(ZooKeeper zoo, String link, String host, String port)  {
-
-    }
 
     private void watchChildrenCallback(WatchedEvent event){
         try{
