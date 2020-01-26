@@ -51,9 +51,10 @@ public class Anonymization {
 
     private String getNewUrl(String m) {
         try{
-
-        }catch (){
             
+            return "";
+        }catch (){
+
         }
     }
 
