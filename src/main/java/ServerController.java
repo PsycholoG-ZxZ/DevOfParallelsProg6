@@ -2,6 +2,7 @@ import akka.actor.Actor;
 import akka.actor.ActorRef;
 import org.apache.zookeeper.ZooKeeper;
 
+import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 public class ServerController {
@@ -17,7 +18,7 @@ public class ServerController {
     public void watchChildrenCallback(){
         try{
             storeActor.tell(new AllServersMessage(zoo.getChildren("/servers", this::watchChildrenCallback).stream()
-            .map(s -> "/servers " + s).collect(Collectors.toCollection())));
+            .map(s -> "/servers " + s).collect(Collectors.toCollection(ArrayList::new))));
         }catch (Exception ex){
             throw new RuntimeException(ex);
 
