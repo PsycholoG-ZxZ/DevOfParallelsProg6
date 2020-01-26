@@ -26,6 +26,7 @@ public class PseudoAnonApp {
         Logger log = Logger.getLogger(PseudoAnonApp.class.getName());
         ZooKeeper zoo = new ZooKeeper("127.0.0.1:2181", 5000, loger -> log.info(loger.toString()));
 
+        
 
 
 
