@@ -14,9 +14,9 @@ public class ServerController {
 
     public watchChildrenCallback(){
         try{
-
+            
         }catch (Exception ex){
-            throw new RuntimeException()
+            throw new RuntimeException(ex);
 
         }
 
