@@ -40,7 +40,7 @@ public class Anonymization {
     }
 
     private CompletionStage<Response> requestTreatment(String url) {
-        return Pattern.ask(storage, new RandomServerMessage())
+        return Pattern.ask(storage, new RandomServerMessage(storage,))
     }
 
     private CompletionStage<Response> fetch(Request build) {
