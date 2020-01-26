@@ -31,7 +31,7 @@ public class Anonymization {
                     if (count_int == 0){
                         response = fetch(asyncHttp.prepareGet(url).build());
                     }else{
-                        response = requestTreatment(url);
+                        response = requestTreatment(url, count-1);
                     }
                     return completeOKWithFutureString(response.thenApply(Response::getResponseBody));
 
@@ -41,7 +41,10 @@ public class Anonymization {
     }
 
     private CompletionStage<Response> requestTreatment(String url) {
-        return Patterns.ask(storage, new GetMessage(), Duration.ofSeconds(5)).thenApply(s -> ((RandomServerMessage)s).server)
+        return Patterns.ask(storage, new GetMessage(), Duration.ofSeconds(5)).thenApply(s -> ((RandomServerMessage)s).getServer())
+                .thenCompose(m -> {
+
+                })
     }
 
     private CompletionStage<Response> fetch(Request build) {
