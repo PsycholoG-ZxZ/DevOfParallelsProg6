@@ -23,10 +23,8 @@ public class Anonymization {
                 {
                     CompletionStage<Response> resp;
 
-
-                    }
                 }))
+        );
 
-        )
     }
 }
