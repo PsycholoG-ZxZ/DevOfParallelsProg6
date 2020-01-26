@@ -1,6 +1,7 @@
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
+import akka.http.javadsl.Http;
 import akka.stream.ActorMaterializer;
 import org.apache.zookeeper.KeeperException;
 import org.asynchttpclient.AsyncHttpClient;
@@ -19,7 +20,7 @@ public class PseudoAnonApp {
         String host = args[0];
         int port = Integer.parseInt(args[1]);
 
-        
+        final Http http =
 
 
 
