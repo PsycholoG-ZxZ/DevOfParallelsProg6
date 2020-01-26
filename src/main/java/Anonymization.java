@@ -28,7 +28,7 @@ public class Anonymization {
                     }else{
 
                     }
-                    return completeOKWithFutureString(response.thenApply());
+                    return completeOKWithFutureString(response.thenApply(Response::getResponseBody));
 
                 }))
         );
