@@ -34,8 +34,8 @@ public class PseudoAnonApp {
 
         ServerController server = new ServerController(storeActor, zoo, link, host);
 
-        final Anonymization anonServer = new Anonymization(zoo,asyncHttpClient);
-        final Flow<HttpRequest, HttpResponse, NotUsed> flowForServer = anonServer
+        final Anonymization anonServer = new Anonymization(zoo,asyncHttpClient, storeActor);
+        final Flow<HttpRequest, HttpResponse, NotUsed> flowForServer = anonServer.routeCreater(system, asyncHttpClient)
 
 
 
