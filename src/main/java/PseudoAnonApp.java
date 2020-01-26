@@ -20,7 +20,8 @@ public class PseudoAnonApp {
         String host = args[0];
         int port = Integer.parseInt(args[1]);
 
-        final Http http =
+        final Http http = Http.get(system);
+        
 
 
 
