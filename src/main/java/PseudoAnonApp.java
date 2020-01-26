@@ -22,7 +22,7 @@ public class PseudoAnonApp {
         int port = Integer.parseInt(args[1]);
 
         final Http http = Http.get(system);
-        ZooKeeper zoo = new ZooKeeper()
+        ZooKeeper zoo = new ZooKeeper("127.0.0.1:8080")
 
 
 
