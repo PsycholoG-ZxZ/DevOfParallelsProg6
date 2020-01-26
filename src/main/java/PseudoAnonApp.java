@@ -39,7 +39,7 @@ public class PseudoAnonApp {
 
         final Anonymization anonServer = new Anonymization(zoo,asyncHttpClient, storeActor);
         final Flow<HttpRequest, HttpResponse, NotUsed> flowForServer = anonServer.routeCreater().flow(system,materializer);
-        final CompletionStage<ServerBinding> bind = http.bindAndHandle(flowForServer, ConnectHttp.toHost(host,port))
+        final CompletionStage<ServerBinding> bind = http.bindAndHandle(flowForServer, ConnectHttp.toHost(host,port), materializer);
 
 
 
