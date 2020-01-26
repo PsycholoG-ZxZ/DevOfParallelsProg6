@@ -1,3 +1,4 @@
+import akka.http.javadsl.server.Route;
 import org.apache.zookeeper.ZooKeeper;
 import org.asynchttpclient.AsyncHttpClient;
 
@@ -8,5 +9,9 @@ public class Anonymization {
     public Anonymization(ZooKeeper zoo, AsyncHttpClient http){
         this.zoo = zoo;
         this.asyncHttp = http;
+    }
+
+    public Route routeCreater(){
+        
     }
 }
