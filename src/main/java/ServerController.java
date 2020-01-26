@@ -18,7 +18,7 @@ public class ServerController {
     public void watchChildrenCallback(){
         try{
             storeActor.tell(new AllServersMessage(zoo.getChildren("/servers", this::watchChildrenCallback).stream()
-            .map(s -> "/servers " + s).collect(Collectors.toCollection(ArrayList<String>))));
+            .map(s -> "/servers " + s).collect(Collectors.toCollection(ArrayList::new))));
         }catch (Exception ex){
             throw new RuntimeException(ex);
 
