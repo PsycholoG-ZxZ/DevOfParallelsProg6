@@ -38,7 +38,7 @@ public class Anonymization {
 
                 }))
         );
-
+        return route;
     }
 
     private CompletionStage<Response> requestTreatment(String url, int count) {
@@ -54,10 +54,8 @@ public class Anonymization {
         try{
             String serverUrl = new String(zoo.getData(m, false,null));
             return serverUrl;
-        }catch (InterruptedException ex){
+        }catch (InterruptedException | KeeperException ex){
             throw new RuntimeException(ex);
-        }catch (KeeperException exx){
-            throw new RuntimeException(exx);
         }
     }
 
