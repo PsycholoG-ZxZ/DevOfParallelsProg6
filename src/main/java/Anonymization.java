@@ -41,7 +41,7 @@ public class Anonymization {
     }
 
     private CompletionStage<Response> requestTreatment(String url) {
-        return Patterns.ask(storage, new GetMessage(), Duration.ofSeconds(5)).
+        return Patterns.ask(storage, new GetMessage(), Duration.ofSeconds(5)).thenApply()
     }
 
     private CompletionStage<Response> fetch(Request build) {
