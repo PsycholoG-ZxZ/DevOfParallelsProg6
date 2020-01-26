@@ -11,4 +11,8 @@ public class ServerController {
         this.zoo = zoo;
         watchChildrenCallback();
     }
+
+    public watchChildrenCallback(){
+        
+    }
 }
