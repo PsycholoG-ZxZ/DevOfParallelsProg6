@@ -15,7 +15,7 @@ public class ServerController {
         watchChildrenCallback();
     }
 
-    public void watchChildrenCallback(){
+    private void watchChildrenCallback(){
         try{
             this.storeActor.tell(new AllServersMessage(zoo.getChildren("/servers", this::watchChildrenCallback).stream()
             .map(s -> "/servers " + s).collect(Collectors.toCollection(ArrayList::new))), ActorRef.noSender());
