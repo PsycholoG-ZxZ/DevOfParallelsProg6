@@ -21,9 +21,11 @@ public class Anonymization {
         Route route = get(()-> parameter("url", url ->
                 parameter("count", count ->
                 {
-                    int count_int = Integer.parseInt(count)
+                    int count_int = Integer.parseInt(count);
                     CompletionStage<Response> resp;
-                    if (count_int = 0)
+                    if (count_int == 0){
+                        
+                    }
 
                 }))
         );
