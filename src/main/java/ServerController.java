@@ -15,7 +15,7 @@ public class ServerController {
         this.storeActor = store;
         this.zoo = zoo;
         watchChildrenCallback(null);
-
+        String port = link.substring(link.length()-5, link.length()-1);
         zoo.create("/servers" + "/" + link, host + ":")
 
     }
