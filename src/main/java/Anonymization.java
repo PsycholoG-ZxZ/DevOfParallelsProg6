@@ -42,11 +42,19 @@ public class Anonymization {
 
     private CompletionStage<Response> requestTreatment(String url, int count) {
         return Patterns.ask(storage, new GetMessage(), Duration.ofSeconds(5)).thenApply(s -> ((RandomServerMessage)s).getServer())
-                .thenCompose(m -> asyncHttp.executeRequest(getRequest("new url",url,count)).toCompletableFuture()
+                .thenCompose(m -> asyncHttp.executeRequest(getRequest(getNewUrl(m),url,count)).toCompletableFuture()
                 .handle((res, ex) -> {
                     storage.tell(new RandomServerMessage(m),ActorRef.noSender());
                     return res;
                 }));
+    }
+
+    private String getNewUrl(String m) {
+        try{
+
+        }catch (){
+            
+        }
     }
 
     private Request getRequest(String servUrl, String url, int count) {
