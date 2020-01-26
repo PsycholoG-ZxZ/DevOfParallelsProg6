@@ -14,7 +14,7 @@ public class ServerController {
 
     public watchChildrenCallback(){
         try{
-            storeActor.
+            storeActor.tell();
         }catch (Exception ex){
             throw new RuntimeException(ex);
 
