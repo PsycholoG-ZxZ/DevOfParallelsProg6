@@ -12,7 +12,7 @@ public class ServerController {
         watchChildrenCallback();
     }
 
-    public watchChildrenCallback(){
+    public  watchChildrenCallback(){
         try{
             storeActor.tell(new);
         }catch (Exception ex){
