@@ -1,9 +1,6 @@
 import akka.actor.Actor;
 import akka.actor.ActorRef;
-import org.apache.zookeeper.CreateMode;
-import org.apache.zookeeper.WatchedEvent;
-import org.apache.zookeeper.ZooDefs;
-import org.apache.zookeeper.ZooKeeper;
+import org.apache.zookeeper.*;
 
 import java.nio.file.WatchEvent;
 import java.util.ArrayList;
@@ -13,7 +10,7 @@ public class ServerController {
     private ActorRef storeActor;
     private ZooKeeper zoo;
 
-    public ServerController(ActorRef store, ZooKeeper zoo, String link, String host){
+    public ServerController(ActorRef store, ZooKeeper zoo, String link, String host) throws InterruptedException, KeeperException{
         this.storeActor = store;
         this.zoo = zoo;
         watchChildrenCallback(null);
@@ -22,7 +19,7 @@ public class ServerController {
                 ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL);
 
     }
-    public void CreaterServer(ZooKeeper zoo, String link, String host, String port) throws InterruptedException{
+    public void CreaterServer(ZooKeeper zoo, String link, String host, String port)  {
 
     }
 
