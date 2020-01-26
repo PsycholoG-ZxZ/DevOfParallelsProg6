@@ -49,7 +49,7 @@ public class Anonymization {
     }
 
     private Request getRequest(String servUrl, String url, int count) {
-        return asyncHttp.prepareGet(servUrl)
+        return asyncHttp.prepareGet(servUrl).addQueryParam("url", url).addQueryParam("count", count).build();
 
     }
 
