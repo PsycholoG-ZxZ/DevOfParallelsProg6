@@ -16,7 +16,7 @@ public class ServerController {
         try{
 
         }catch (Exception ex){
-            throw new 
+            throw new RuntimeException()
 
         }
 
