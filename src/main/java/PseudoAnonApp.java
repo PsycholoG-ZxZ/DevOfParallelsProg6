@@ -47,6 +47,9 @@ public class PseudoAnonApp {
 
         final Http http = Http.get(system);
         Logger log = Logger.getLogger(PseudoAnonApp.class.getName());
+
+        /* Создаем экземпляр класса ZooKeeper */
+
         ZooKeeper zoo = new ZooKeeper(IP_PORT_ZOO, 5000, loger -> log.info(loger.toString()));
 
         String link = LOCALHOST + port;
