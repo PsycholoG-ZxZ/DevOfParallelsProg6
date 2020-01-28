@@ -30,6 +30,6 @@ public class ServerController {
     }
 
     public void removerWatches(){
-        zoo.removeAllWatches();
+        zoo.removeAllWatches("servers");
     }
 }
