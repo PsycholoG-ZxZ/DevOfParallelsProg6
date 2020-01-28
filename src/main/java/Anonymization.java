@@ -43,7 +43,7 @@ public class Anonymization {
                     int count_int = Integer.parseInt(count);
                     CompletionStage<Response> response;
                     if (count_int == 0){
-                        response = fetch(asyncHttp.prepareGet(url).build()); // Если счетчик равен 0, то осуществляем запрос по URL, 
+                        response = fetch(asyncHttp.prepareGet(url).build()); // Если счетчик равен 0, то осуществляем запрос по URL, получаем данные по этому URL
                     }else{
 
                         /* Если счетчик не равен 0, то получаем новый URL от хранилища и делаем запрос к нему с аналогичными параметрами
@@ -68,6 +68,7 @@ public class Anonymization {
                 }));
     }
 
+    //формируем новые данные для нового реквеста
     private String getNewUrl(String m) {
         try{
             String serverUrl = new String(zoo.getData(m, false,null));
@@ -77,6 +78,7 @@ public class Anonymization {
         }
     }
 
+    //Непосредственное формирование нового запроса
     private Request getRequest(String servUrl, String url, int count) {
         String count_str = Integer.toString(count);
         return asyncHttp.prepareGet(servUrl).addQueryParam(URL, url).addQueryParam(COUNT, count_str).build();
