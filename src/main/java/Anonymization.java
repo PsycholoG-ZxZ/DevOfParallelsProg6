@@ -13,6 +13,10 @@ import akka.pattern.Patterns;
 import static akka.http.javadsl.server.Directives.*;
 
 public class Anonymization {
+
+    private static final String URL = "url";
+    private static final String COUNT = "count";
+
     private ZooKeeper zoo;
     private AsyncHttpClient asyncHttp;
     private ActorRef storage;
@@ -24,8 +28,8 @@ public class Anonymization {
     }
 
     public Route routeCreater(){
-        Route route = get(()-> parameter("url", url ->
-                parameter("count", count ->
+        Route route = get(()-> parameter(URL, url ->
+                parameter(COUNT, count ->
                 {
                     int count_int = Integer.parseInt(count);
                     CompletionStage<Response> response;
