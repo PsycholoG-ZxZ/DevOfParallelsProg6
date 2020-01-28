@@ -27,6 +27,7 @@ public class Anonymization {
         this.storage = st;
     }
 
+    //Строим дерево ROUTE  и задаем обработчик запросов
     public Route routeCreater(){
         Route route = get(()-> parameter(URL, url ->
                 parameter(COUNT, count ->
@@ -42,8 +43,12 @@ public class Anonymization {
                     int count_int = Integer.parseInt(count);
                     CompletionStage<Response> response;
                     if (count_int == 0){
-                        response = fetch(asyncHttp.prepareGet(url).build());
+                        response = fetch(asyncHttp.prepareGet(url).build()); // Если счетчик равен 0, то осуществляем запрос по URL
                     }else{
+
+                        /* Если счетчик не равен 0, то получаем новый URL от хранилища и делаем запрос к нему с аналогичными параметрами
+                         * URL и COUNT, только COUNT на 1 меньше.
+                         */
                         response = requestTreatment(url, count_int-1);
                     }
                     return completeOKWithFutureString(response.thenApply(Response::getResponseBody));
@@ -53,9 +58,10 @@ public class Anonymization {
         return route;
     }
 
+    // Обработка запроса с понижением COUNT
     private CompletionStage<Response> requestTreatment(String url, int count) {
-        return Patterns.ask(storage, new GetMessage(), Duration.ofSeconds(5)).thenApply(s -> ((RandomServerMessage)s).getServer())
-                .thenCompose(m -> asyncHttp.executeRequest(getRequest(getNewUrl(m),url,count)).toCompletableFuture()
+        return Patterns.ask(storage, new GetMessage(), Duration.ofSeconds(5)).thenApply(s -> ((RandomServerMessage)s).getServer()) //забираем рандомный сервер
+                .thenCompose(m -> asyncHttp.executeRequest(getRequest(getNewUrl(m),url,count)).toCompletableFuture() // сервер совершает запрос с аналогичными параметрами с уменьшением на 1
                 .handle((res, ex) -> {
                     storage.tell(new RandomServerMessage(m),ActorRef.noSender());
                     return res;
@@ -73,11 +79,12 @@ public class Anonymization {
 
     private Request getRequest(String servUrl, String url, int count) {
         String count_str = Integer.toString(count);
-        return asyncHttp.prepareGet(servUrl).addQueryParam("url", url).addQueryParam("count", count_str).build();
+        return asyncHttp.prepareGet(servUrl).addQueryParam(URL, url).addQueryParam(COUNT, count_str).build();
 
     }
 
-    private CompletionStage<Response> fetch(Request build) {
-        return asyncHttp.executeRequest(build).toCompletableFuture();
+    private CompletionStage<Response> fetch(Request req) {
+        System.out.println("REQUEST: " + req.getUrl());
+        return asyncHttp.executeRequest(req).toCompletableFuture();
     }
 }

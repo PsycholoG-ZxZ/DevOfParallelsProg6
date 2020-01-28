@@ -27,11 +27,9 @@ public class PseudoAnonApp {
     private static final String HTTP = "http://";
     private static final String IP_PORT_ZOO = "127.0.0.1:2181";
     private static final String LOCALHOST = "localhost";
-
     /*
      * Требуется разработать приложение использующее технологии zookeeper, акка
      * и позволяющее «анонимизировать» запрос.
-     *
      */
 
     public static void main (String[] args) throws InterruptedException, KeeperException, IOException {
@@ -49,23 +47,32 @@ public class PseudoAnonApp {
         final Http http = Http.get(system);
         Logger log = Logger.getLogger(PseudoAnonApp.class.getName());
 
-        /* Создаем экземпляр класса ZooKeeper
+        /*
+         * Создаем экземпляр класса ZooKeeper
          * IP_PORT_ZOO - Сервер с портом
          * SESSION_TIMEOUT - Timeout сессии
          * watcher-callback для обработки событий сессии
          * (слайд 20)
          */
-
         ZooKeeper zoo = new ZooKeeper(IP_PORT_ZOO, SESSION_TIMEOUT, loger -> log.info(loger.toString()));
-        String link = LOCALHOST + port;
 
+        /*
+         * Подключаемся к зоо и вешаем вотчер кидающий хранилищу команду обновы конфигурации
+         */
+        String link = LOCALHOST + port;
         ServerController server = new ServerController(storeActor, zoo, link, host);
 
+        /* Запускаем процесс анонимизации */
         final Anonymization anonServer = new Anonymization(zoo,asyncHttpClient, storeActor);
+
         final Flow<HttpRequest, HttpResponse, NotUsed> flowForServer = anonServer.routeCreater().flow(system,materializer);
+
         final CompletionStage<ServerBinding> bind = http.bindAndHandle(flowForServer, ConnectHttp.toHost(host,port), materializer);
 
         System.in.read();
+
+        /* Закрываем все */
+        System.out.println("Closed");
         asyncHttpClient.close();
         server.removerWatches();
         zoo.close();
