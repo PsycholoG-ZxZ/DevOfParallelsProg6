@@ -20,14 +20,19 @@ import java.util.logging.Logger;
 import static org.asynchttpclient.Dsl.asyncHttpClient;
 
 public class PseudoAnonApp {
+
+    private static final int HOST = 0;
+    private static final int PORT = 1;
+    private static final String HTTP = "http://";
+
     public static void main (String[] args) throws InterruptedException, KeeperException, IOException {
         ActorSystem system = ActorSystem.create("anonymizer");
         ActorRef storeActor = system.actorOf(Props.create(StoreActor.class));
         final ActorMaterializer materializer = ActorMaterializer.create(system);
         final AsyncHttpClient asyncHttpClient = asyncHttpClient();
 
-        String host = args[0];
-        int port = Integer.parseInt(args[1]);
+        String host = args[HOST];
+        int port = Integer.parseInt(args[PORT]);
 
         final Http http = Http.get(system);
         Logger log = Logger.getLogger(PseudoAnonApp.class.getName());
