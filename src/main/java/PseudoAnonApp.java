@@ -43,7 +43,8 @@ public class PseudoAnonApp {
 
         System.in.read();
         asyncHttpClient.close();
-        server
+        server.removerWatches();
+        zoo.close();
 
 
 
