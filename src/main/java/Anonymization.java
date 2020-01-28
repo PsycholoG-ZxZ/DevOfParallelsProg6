@@ -32,9 +32,13 @@ public class Anonymization {
                 parameter(COUNT, count ->
                 {
                     /*
-                     * 
-                     * */
-
+                     * Разрабатываем akka http сервер который при получении запроса либо
+                     * отправляет его на случайный сервер, уменьшая счетчик на 1 Либо
+                     * осуществляет get для данного url и возвращает.
+                     *
+                     * count & count_int содержат одинаковое значение счетчика
+                     * различие ток в типе данных (String, int соответственно)
+                     */
                     int count_int = Integer.parseInt(count);
                     CompletionStage<Response> response;
                     if (count_int == 0){
