@@ -29,7 +29,7 @@ public class ServerController {
 
     }
 
-    public void removerWatches(){
+    public void removerWatches() throws KeeperException, InterruptedException{
         zoo.removeAllWatches("/servers", Watcher.WatcherType.Any, true);
 
     }
