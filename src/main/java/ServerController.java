@@ -6,7 +6,12 @@ import java.nio.file.WatchEvent;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
+
 public class ServerController {
+
+    private static final String SERVERS_PATH = "/servers";
+    private static final String SERVERS_PATH_WITH_SLASH = "/servers/";
+
     private ActorRef storeActor;
     private ZooKeeper zoo;
 
