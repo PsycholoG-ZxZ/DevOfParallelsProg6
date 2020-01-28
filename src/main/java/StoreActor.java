@@ -16,13 +16,12 @@ public class StoreActor extends AbstractActor {
                         getSender().tell(new RandomServerMessage(addresses.get(randomServer.nextInt(addresses.size()))), self()))
 
                 .match(AllServersMessage.class, m ->{ ArrayList<String> newServers = m.getAllServers();
-         //               if (addresses.size() == 0) {
-         //                   this.addresses.addAll(newServers);
-         //               }else{
-                            System.out.println("HEARTBEAT" + m.getAllServers());
+                            System.out.println("HEARTBEAT: " + m.getAllServers());
                             addresses.clear();
                             addresses.addAll(newServers);
-         //               }
+                    /*
+                    * Каждый клиент поддерживает сессию – отправляет heartbeat
+                    */
                 })
 
                 .match(RandomServerMessage.class, m -> this.addresses.remove(m.getServer()))
