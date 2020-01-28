@@ -30,7 +30,7 @@ public class ServerController {
     }
 
     public void removerWatches(){
-        zoo.removeAllWatches("/servers", Watcher.WatcherType.Any, null);
+        zoo.removeAllWatches("/servers", Watcher.WatcherType.Any, true);
 
     }
 }
