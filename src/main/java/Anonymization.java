@@ -60,6 +60,7 @@ public class Anonymization {
 
     // Обработка запроса с понижением COUNT
     private CompletionStage<Response> requestTreatment(String url, int count) {
+        System.out.println("REQUEST_URL: " + url);
         return Patterns.ask(storage, new GetMessage(), Duration.ofSeconds(5)).thenApply(s -> ((RandomServerMessage)s).getServer()) //забираем рандомный сервер
                 .thenCompose(m -> asyncHttp.executeRequest(getRequest(getNewUrl(m),url,count)).toCompletableFuture() // сервер совершает запрос с аналогичными параметрами с уменьшением на 1
                 .handle((res, ex) -> {
