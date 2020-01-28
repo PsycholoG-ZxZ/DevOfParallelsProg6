@@ -50,7 +50,7 @@ public class PseudoAnonApp {
         Logger log = Logger.getLogger(PseudoAnonApp.class.getName());
 
         /* Создаем экземпляр класса ZooKeeper
-        *  */
+        * IP_PORT_ZOO - список серверов с портами */
 
         ZooKeeper zoo = new ZooKeeper(IP_PORT_ZOO, SESSION_TIMEOUT, loger -> log.info(loger.toString()));
 
