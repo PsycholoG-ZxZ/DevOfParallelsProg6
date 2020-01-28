@@ -86,7 +86,7 @@ public class Anonymization {
     }
 
     private CompletionStage<Response> fetch(Request req) {
-        System.out.println("REQUEST: " + req.getUrl());
+        System.out.println("REQUEST: " + req.getUri());
         return asyncHttp.executeRequest(req).toCompletableFuture();
     }
 }
