@@ -23,6 +23,7 @@ public class PseudoAnonApp {
 
     private static final int HOST = 0;
     private static final int PORT = 1;
+    private static final int SESSION_TIMEOUT = 5000;
     private static final String HTTP = "http://";
     private static final String IP_PORT_ZOO = "127.0.0.1:2181";
     private static final String LOCALHOST = "localhost";
@@ -51,7 +52,7 @@ public class PseudoAnonApp {
         /* Создаем экземпляр класса ZooKeeper
         *  */
 
-        ZooKeeper zoo = new ZooKeeper(IP_PORT_ZOO, 5000, loger -> log.info(loger.toString()));
+        ZooKeeper zoo = new ZooKeeper(IP_PORT_ZOO, SESSION_TIMEOUT, loger -> log.info(loger.toString()));
 
 
 
