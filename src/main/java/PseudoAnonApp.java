@@ -41,6 +41,9 @@ public class PseudoAnonApp {
         final Flow<HttpRequest, HttpResponse, NotUsed> flowForServer = anonServer.routeCreater().flow(system,materializer);
         final CompletionStage<ServerBinding> bind = http.bindAndHandle(flowForServer, ConnectHttp.toHost(host,port), materializer);
 
+        System.in.read();
+        
+
 
 
 
