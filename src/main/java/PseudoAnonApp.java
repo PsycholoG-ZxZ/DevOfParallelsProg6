@@ -24,6 +24,8 @@ public class PseudoAnonApp {
     private static final int HOST = 0;
     private static final int PORT = 1;
     private static final String HTTP = "http://";
+    private static final String IP_PORT_ZOO = "127.0.0.1:2181";
+    private static final String LOCALHOST = "localhost";
 
     /*
     * Требуется разработать приложение использующее технологии zookeeper, акка
@@ -40,16 +42,14 @@ public class PseudoAnonApp {
         /*
         *   Администратор запускает несколько серверов. В параметре командной строки он указывает порт для каждого.
         */
-        
-
         String host = HTTP + args[HOST];
         int port = Integer.parseInt(args[PORT]);
 
         final Http http = Http.get(system);
         Logger log = Logger.getLogger(PseudoAnonApp.class.getName());
-        ZooKeeper zoo = new ZooKeeper("127.0.0.1:2181", 5000, loger -> log.info(loger.toString()));
+        ZooKeeper zoo = new ZooKeeper(IP_PORT_ZOO, 5000, loger -> log.info(loger.toString()));
 
-        String link = "localhost" + port;
+        String link = LOCALHOST + port;
 
         ServerController server = new ServerController(storeActor, zoo, link, host);
 
