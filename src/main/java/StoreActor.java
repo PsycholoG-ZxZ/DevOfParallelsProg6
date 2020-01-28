@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class StoreActor extends AbstractActor {
-    private ArrayList<String> addresses;
-    private Random randomServer;
+    private ArrayList<String> addresses = new ArrayList<String>();
+    private Random randomServer = new Random();
 
 
     @Override
