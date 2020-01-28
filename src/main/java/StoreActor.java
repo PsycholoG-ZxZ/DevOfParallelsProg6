@@ -19,6 +19,7 @@ public class StoreActor extends AbstractActor {
          //               if (addresses.size() == 0) {
          //                   this.addresses.addAll(newServers);
          //               }else{
+                            System.out.println("" + m.getAllServers());
                             this.addresses.clear();
                             this.addresses.addAll(newServers);
          //               }
