@@ -15,14 +15,18 @@ public class StoreActor extends AbstractActor {
                 .match(GetMessage.class, m ->
                         getSender().tell(new RandomServerMessage(addresses.get(randomServer.nextInt(addresses.size()))), self()))
 
-                .match(AllServersMessage.class, m ->{ ArrayList<String> newServers = m.getAllServers();
-                            System.out.println("HEARTBEAT: " + m.getAllServers());
-                            addresses.clear();
-                            addresses.addAll(newServers);
+                .match(AllServersMessage.class, m ->{
+                    ArrayList<String> newServers = m.getAllServers();
+
                     /*
-                    * Каждый клиент поддерживает сессию – отправляет heartbeat
-                    * Получаем список подключенных в данный момент клиентов
+                     * Каждый клиент поддерживает сессию – отправляет heartbeat
+                     * Получаем список подключенных в данный момент клиентов
+                     * (17 слайд)
                      */
+
+                    System.out.println("HEARTBEAT: " + m.getAllServers());
+                    addresses.clear();
+                    addresses.addAll(newServers);
                 })
 
                 .match(RandomServerMessage.class, m -> this.addresses.remove(m.getServer()))
