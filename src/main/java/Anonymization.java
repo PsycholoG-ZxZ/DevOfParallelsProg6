@@ -43,7 +43,7 @@ public class Anonymization {
                     int count_int = Integer.parseInt(count);
                     CompletionStage<Response> response;
                     if (count_int == 0){
-                        response = fetch(asyncHttp.prepareGet(url).build()); // Если счетчик равен 0, то осуществляем запрос по URL
+                        response = fetch(asyncHttp.prepareGet(url).build()); // Если счетчик равен 0, то осуществляем запрос по URL, 
                     }else{
 
                         /* Если счетчик не равен 0, то получаем новый URL от хранилища и делаем запрос к нему с аналогичными параметрами
