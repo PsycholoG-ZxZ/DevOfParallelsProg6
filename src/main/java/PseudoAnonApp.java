@@ -51,7 +51,8 @@ public class PseudoAnonApp {
 
         /* Создаем экземпляр класса ZooKeeper
         * IP_PORT_ZOO - Сервер с портом
-        * SESSION_TIMEOUT -  */
+        * SESSION_TIMEOUT - Timeout сессии
+        * Watcher */
 
         ZooKeeper zoo = new ZooKeeper(IP_PORT_ZOO, SESSION_TIMEOUT, loger -> log.info(loger.toString()));
 
