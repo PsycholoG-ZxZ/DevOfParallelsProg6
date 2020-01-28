@@ -41,7 +41,7 @@ public class PseudoAnonApp {
 
         /*
         *   Администратор запускает несколько серверов. В параметре командной строки он указывает порт для каждого.
-        */
+         */
         String host = HTTP + args[HOST];
         int port = Integer.parseInt(args[PORT]);
 

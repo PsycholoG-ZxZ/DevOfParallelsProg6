@@ -21,7 +21,8 @@ public class StoreActor extends AbstractActor {
                             addresses.addAll(newServers);
                     /*
                     * Каждый клиент поддерживает сессию – отправляет heartbeat
-                    */
+                    * Получаем список подключенных в данный момент клиентов
+                     */
                 })
 
                 .match(RandomServerMessage.class, m -> this.addresses.remove(m.getServer()))
