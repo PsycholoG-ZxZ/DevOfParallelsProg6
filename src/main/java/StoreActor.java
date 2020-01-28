@@ -19,7 +19,7 @@ public class StoreActor extends AbstractActor {
          //               if (addresses.size() == 0) {
          //                   this.addresses.addAll(newServers);
          //               }else{
-                            System.out.println("" + m.getAllServers());
+                            System.out.println("HEARTBEAT" + m.getAllServers());
                             addresses.clear();
                             addresses.addAll(newServers);
          //               }
