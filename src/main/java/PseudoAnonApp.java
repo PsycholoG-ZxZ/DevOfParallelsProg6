@@ -45,7 +45,7 @@ public class PseudoAnonApp {
         asyncHttpClient.close();
         server.removerWatches();
         zoo.close();
-        bind.thenCompose()
+        bind.thenCompose(ServerBinding::unbind)
 
 
 
