@@ -24,6 +24,8 @@ public class StoreActor extends AbstractActor {
                         }
                 })
 
+                .match(RandomServerMessage.class, m -> this.addresses.remove(m.getServer()))
+
                 .build();
 
     }
