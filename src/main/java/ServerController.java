@@ -20,15 +20,15 @@ public class ServerController {
         this.zoo = zoo;
         watchChildrenCallback(null);
         String port = link.substring(link.length()-4, link.length());
-        zoo.create("/servers/" + link, (host + ":" + port).getBytes(),
+        zoo.create(SERVERS_PATH_WITH_SLASH + link, (host + ":" + port).getBytes(),
                 ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL);
     }
 
     private void watchChildrenCallback(WatchedEvent event){
         try{
             /* Получение данных об узлах: getChildren - получение дочерних узлов */
-            this.storeActor.tell(new AllServersMessage(zoo.getChildren("/servers", this::watchChildrenCallback).stream()
-            .map(s -> "/servers/" + s).collect(Collectors.toCollection(ArrayList::new))), ActorRef.noSender());
+            this.storeActor.tell(new AllServersMessage(zoo.getChildren(SERVERS_PATH, this::watchChildrenCallback).stream()
+            .map(s -> SERVERS_PATH_WITH_SLASH + s).collect(Collectors.toCollection(ArrayList::new))), ActorRef.noSender());
         }catch (Exception ex){
             throw new RuntimeException(ex);
         }
@@ -36,7 +36,7 @@ public class ServerController {
     }
 
     public void removerWatches() throws KeeperException, InterruptedException{
-        zoo.removeAllWatches("/servers", Watcher.WatcherType.Any, true);
+        zoo.removeAllWatches(SERVERS_PATH, Watcher.WatcherType.Any, true);
 
     }
 }
