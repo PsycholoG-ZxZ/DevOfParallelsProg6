@@ -29,10 +29,10 @@ public class PseudoAnonApp {
     private static final String LOCALHOST = "localhost";
 
     /*
-    * Требуется разработать приложение использующее технологии zookeeper, акка
-    * и позволяющее «анонимизировать» запрос.
-    *
-    */
+     * Требуется разработать приложение использующее технологии zookeeper, акка
+     * и позволяющее «анонимизировать» запрос.
+     *
+     */
 
     public static void main (String[] args) throws InterruptedException, KeeperException, IOException {
         ActorSystem system = ActorSystem.create("anonymizer");
@@ -41,7 +41,7 @@ public class PseudoAnonApp {
         final AsyncHttpClient asyncHttpClient = asyncHttpClient();
 
         /*
-        *   Администратор запускает несколько серверов. В параметре командной строки он указывает порт для каждого.
+         *   Администратор запускает несколько серверов. В параметре командной строки он указывает порт для каждого.
          */
         String host = HTTP + args[HOST];
         int port = Integer.parseInt(args[PORT]);
@@ -50,13 +50,15 @@ public class PseudoAnonApp {
         Logger log = Logger.getLogger(PseudoAnonApp.class.getName());
 
         /* Создаем экземпляр класса ZooKeeper
-        * IP_PORT_ZOO - Сервер с портом
-        * SESSION_TIMEOUT - Timeout сессии
-        * Watcher */
+         * IP_PORT_ZOO - Сервер с портом
+         * SESSION_TIMEOUT - Timeout сессии
+         * watcher-callback для обработки событий сессии
+         * (слайд 20)
+         */
 
         ZooKeeper zoo = new ZooKeeper(IP_PORT_ZOO, SESSION_TIMEOUT, loger -> log.info(loger.toString()));
 
-
+    
 
         String link = LOCALHOST + port;
 
