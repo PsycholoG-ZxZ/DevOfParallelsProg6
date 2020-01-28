@@ -42,7 +42,7 @@ public class PseudoAnonApp {
         final CompletionStage<ServerBinding> bind = http.bindAndHandle(flowForServer, ConnectHttp.toHost(host,port), materializer);
 
         System.in.read();
-        
+        asyncHttpClient.close();
 
 
 
