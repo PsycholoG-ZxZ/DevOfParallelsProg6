@@ -84,7 +84,7 @@ public class Anonymization {
         return asyncHttp.prepareGet(servUrl).addQueryParam(URL, url).addQueryParam(COUNT, count_str).build();
 
     }
-
+    
     private CompletionStage<Response> fetch(Request req) {
         System.out.println("REQUEST: " + req.getUri());
         return asyncHttp.executeRequest(req).toCompletableFuture();
