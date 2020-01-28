@@ -52,6 +52,8 @@ public class PseudoAnonApp {
 
         ZooKeeper zoo = new ZooKeeper(IP_PORT_ZOO, 5000, loger -> log.info(loger.toString()));
 
+        /* */
+
         String link = LOCALHOST + port;
 
         ServerController server = new ServerController(storeActor, zoo, link, host);
