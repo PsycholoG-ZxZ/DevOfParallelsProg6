@@ -25,6 +25,12 @@ public class PseudoAnonApp {
     private static final int PORT = 1;
     private static final String HTTP = "http://";
 
+    /*
+    * Требуется разработать приложение использующее технологии zookeeper, акка
+    * и позволяющее «анонимизировать» запрос.
+    *
+    */
+
     public static void main (String[] args) throws InterruptedException, KeeperException, IOException {
         ActorSystem system = ActorSystem.create("anonymizer");
         ActorRef storeActor = system.actorOf(Props.create(StoreActor.class));
@@ -34,7 +40,7 @@ public class PseudoAnonApp {
         /*
         *   
         *
-        * */
+        */
 
         String host = HTTP + args[HOST];
         int port = Integer.parseInt(args[PORT]);
