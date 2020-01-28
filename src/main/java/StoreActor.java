@@ -29,6 +29,8 @@ public class StoreActor extends AbstractActor {
                     addresses.addAll(newServers);
                 })
 
+                /* В случае прерывания сессии, подписки исчезают. Все неактивное убирается (слайд 19) */
+
                 .match(RandomServerMessage.class, m -> this.addresses.remove(m.getServer()))
 
                 .build();
