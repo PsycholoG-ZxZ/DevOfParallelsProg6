@@ -15,14 +15,18 @@ public class ServerController {
     private ActorRef storeActor;
     private ZooKeeper zoo;
 
+
+
     public ServerController(ActorRef store, ZooKeeper zoo, String link, String host) throws InterruptedException, KeeperException{
         this.storeActor = store;
         this.zoo = zoo;
         watchChildrenCallback(null);
         String port = link.substring(link.length()-4, link.length());
-        zoo.create(SERVERS_PATH_WITH_SLASH + link, (host + ":" + port).getBytes(),
-                ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL);
+        // The Znode will be deleted upon the client's disconnect
+        zoo.create(SERVERS_PATH_WITH_SLASH + link, (host + ":" + port).getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL);   //Создаем узел (слайд 22)
     }
+
+
 
     private void watchChildrenCallback(WatchedEvent event){
         try{
