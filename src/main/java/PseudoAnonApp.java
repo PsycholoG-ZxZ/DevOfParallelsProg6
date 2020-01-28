@@ -31,7 +31,12 @@ public class PseudoAnonApp {
         final ActorMaterializer materializer = ActorMaterializer.create(system);
         final AsyncHttpClient asyncHttpClient = asyncHttpClient();
 
-        String host = args[HOST];
+        /*
+        *   
+        *
+        * */
+
+        String host = HTTP + args[HOST];
         int port = Integer.parseInt(args[PORT]);
 
         final Http http = Http.get(system);
