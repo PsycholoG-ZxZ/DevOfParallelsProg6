@@ -21,6 +21,7 @@ public class ServerController {
 
     private void watchChildrenCallback(WatchedEvent event){
         try{
+            /* Получение данных об узлах: getChildren - получение дочерних узлов */
             this.storeActor.tell(new AllServersMessage(zoo.getChildren("/servers", this::watchChildrenCallback).stream()
             .map(s -> "/servers/" + s).collect(Collectors.toCollection(ArrayList::new))), ActorRef.noSender());
         }catch (Exception ex){

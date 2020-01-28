@@ -57,9 +57,6 @@ public class PseudoAnonApp {
          */
 
         ZooKeeper zoo = new ZooKeeper(IP_PORT_ZOO, SESSION_TIMEOUT, loger -> log.info(loger.toString()));
-
-    
-
         String link = LOCALHOST + port;
 
         ServerController server = new ServerController(storeActor, zoo, link, host);
